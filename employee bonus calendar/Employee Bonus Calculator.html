@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Employee Bonus Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding-left: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1{
+            text-align: center;
+            color: #333;
+        }
+        label{
+            display: block;
+            margin: 15px 0 5px;
+        }
+        input[type="number"]{
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #0073e6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+            button:hover {
+                background-color: #005bb5;
+            }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Employee Bonus Calculator</h1>
+        <form id="bonusForm">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="yearsEmployed">Years Employed:</label>
+            <input type="number" id="yearsEmployed" name="yearsEmployed" required>
+
+            <label for="annualSalary">Current Annual Salary:</label>
+            <input type="number" id="annualSalary" name="annualSalary" required>
+
+            <button type="submit">Calculate Bonus</button>
+        </form>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('bonusForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const age = parseInt(document.getElementById('age').value);
+            const yearsEmployed = parseInt(document.getElementById('yearsEmployed').value);
+            const annualSalary = parseFloat(document.getElementById('annualSalary').value);
+            let bonus = 0;
+
+            if (age >= 50 && yearsEmployed > 5) {
+                if (yearsEmployed >= 26) {
+                    bonus = annualSalary;
+                } else if (yearsEmployed >= 21) {
+                    bonus = annualSalary * 0.50;
+                } else if (yearsEmployed >= 16) {
+                    bonus = annualSalary * 0.40;
+                } else if (yearsEmployed >= 11) {
+                    bonus = annualSalary * 0.30;
+                } else if (yearsEmployed >= 6) {
+                    bonus = annualSalary * 0.20;
+                }
+            }
+
+            document.getElementById('result').innerText = `The calculated bonus is $${bonus.toFixed(2)}`;
+        });
+    </script>
+</body>
+</html>
