@@ -6,6 +6,6 @@ This is an Employee bonus calculator written in HTML that calculates the age, ho
 
 Pleaase download the files and open them in visual studio
 
-### Prerequisrite
+### Prerequisite
 
 This requires Visual Studio 2022 or Visual Studio Enterprise 2022
